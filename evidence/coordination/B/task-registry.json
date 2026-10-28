@@ -1,0 +1,53 @@
+{
+  "spec_version": "v2",
+  "contract_version": "v2",
+  "baseline_commit": "a96fdf66038c1775e1ead91d0f949c12415ccf00",
+  "tasks": {
+    "TASK1": {
+      "spec_version": "v2",
+      "contract_version": "v2",
+      "base_commit": "cc9ca11b2d56705fa39f2a923a269a13f3179129",
+      "owner": "b_task1",
+      "owned_files": [
+        "features/create_api.py",
+        "web/create.html",
+        "web/create.js",
+        "tests/test_create.py",
+        "web/create.css"
+      ],
+      "state": "integrated-v2-validated",
+      "submission_revision": 2,
+      "branch": "task/b-create",
+      "worktree": "[original-experiment-root]/arms/B/task1",
+      "candidate_sha": "bd39f49cb307830cbdd20a49f5b6202d2b8681d3",
+      "ready_utc": "2026-10-27T17:04:04Z",
+      "checkpoint_v1": "2dfbacc481e289ee74fc701d2d35d707b42bdb64",
+      "evidence_state": "branch v2 evidence + exact merged HEAD integration evidence",
+      "integration_sha": "42202c03eb19d84833386b26742fc6f78aa5b222"
+    },
+    "TASK2": {
+      "spec_version": "v2",
+      "contract_version": "v2",
+      "base_commit": "6fb2962693fac239c3ef40d58b5f98b918fb6789",
+      "owner": "b_task2",
+      "owned_files": [
+        "features/list_api.py",
+        "web/requests.html",
+        "web/requests.js",
+        "tests/test_list.py",
+        "web/requests.css"
+      ],
+      "state": "integrated-v2-validated",
+      "submission_revision": 2,
+      "branch": "task/b-list",
+      "worktree": "[original-experiment-root]/arms/B/task2",
+      "candidate_sha": "fac11fcc45f750b85c7e5d706a3a7ade926a9eeb",
+      "ready_utc": "2026-10-27T17:03:17Z",
+      "checkpoint_v1": "91df9ee5190400ba9cd621590e2d5f805eb5f9a5",
+      "evidence_state": "branch v2 evidence + exact merged HEAD integration evidence",
+      "integration_sha": "42202c03eb19d84833386b26742fc6f78aa5b222"
+    }
+  },
+  "integration_sha": "42202c03eb19d84833386b26742fc6f78aa5b222",
+  "first_complete_utc": "2026-10-27T17:08:29.281793+00:00"
+}

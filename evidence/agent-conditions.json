@@ -1,0 +1,29 @@
+{
+  "recorded_utc": "2026-10-27T16:58:57.909756+00:00",
+  "coordinators": [
+    {
+      "arm": "A",
+      "task_name": "/root/arm_a",
+      "requested_model": "gpt-6.1-sol",
+      "requested_reasoning_effort": "high",
+      "fork_turns": "none"
+    },
+    {
+      "arm": "B",
+      "task_name": "/root/arm_b",
+      "requested_model": "gpt-6.1-sol",
+      "requested_reasoning_effort": "high",
+      "fork_turns": "none"
+    }
+  ],
+  "spawn_result": "Both accepted and returned task_name; actual backend model/reasoning not independently exposed.",
+  "parallelism": "Two coordinators; at most two implementation children per coordinator; total concurrent experiment agents 6 plus root observer.",
+  "common_barrier": "Both sets of first v1 candidates complete, before final task reviews and integration.",
+  "tooling": {
+    "playwright": "1.59.1 existing npm cache package",
+    "chromium": "151.0.7922.34 existing cache executable",
+    "browser_mode": "headless temporary profile, no user Chrome session"
+  },
+  "source_skill": "wan-huiyan/subagent-driven-development@3a020dd96a45ef791f7009f95710fc3bdaadea2d",
+  "source_execution": "Guideline-based reproduction, not installed original plugin execution."
+}

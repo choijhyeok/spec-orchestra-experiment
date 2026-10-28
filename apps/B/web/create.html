@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New request · Request Desk</title>
+  <link rel="stylesheet" href="/shared.css">
+  <script src="/shared.js" defer></script>
+  <script src="/create.js" defer></script>
+</head>
+<body>
+  <header class="site-header" data-shell></header>
+  <main>
+    <div class="stack">
+      <h1>New request</h1>
+      <p class="muted">Add a request with the requester's name and email.</p>
+    </div>
+    <form id="create-form" class="card stack">
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" name="title" required maxlength="80" aria-describedby="title-help">
+        <p id="title-help" class="muted">1–80 characters.</p>
+      </div>
+      <div class="field">
+        <label for="requester-name">Requester name</label>
+        <input id="requester-name" name="requesterName" required maxlength="60" autocomplete="name" aria-describedby="name-help">
+        <p id="name-help" class="muted">1–60 characters.</p>
+      </div>
+      <div class="field">
+        <label for="requester-email">Requester email</label>
+        <input id="requester-email" name="requesterEmail" type="email" required autocomplete="email" aria-describedby="email-help">
+        <p id="email-help" class="muted">For example, arin@example.test.</p>
+      </div>
+      <p id="create-error" class="error" role="alert" tabindex="-1" hidden></p>
+      <div class="actions"><button type="submit">Create request</button></div>
+    </form>
+    <section id="create-success" class="card stack" role="status" tabindex="-1" hidden>
+      <p class="success">Request created successfully.</p>
+      <a href="/requests">View requests</a>
+    </section>
+  </main>
+</body>
+</html>

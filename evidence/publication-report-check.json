@@ -1,0 +1,11 @@
+{
+  "images": 8,
+  "allEmbedded": true,
+  "missingFragments": [],
+  "desktopMobileNoOverflow": true,
+  "embeddedEvidenceOpens": true,
+  "pageErrors": [],
+  "externalResourceRequests": [],
+  "roleDifferenceExplained": true,
+  "plannedV2ExcludedFromCorrectiveRework": true
+}

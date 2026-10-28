@@ -1,0 +1,253 @@
+{
+  "measured_utc": "2026-10-27T17:08:59.186727+00:00",
+  "agent_starts": {
+    "main": 1,
+    "implementers": 2,
+    "separate_reviewers": 1,
+    "total": 4
+  },
+  "agent_turn_invocations": {
+    "main": 2,
+    "implementers": 4,
+    "reviewer": 1,
+    "total": 7
+  },
+  "implementation_concurrency_limit": 2,
+  "main_review_groups": {
+    "actual_feature_diff_and_evidence": 1,
+    "version_gate": 1,
+    "separate_spec_verdict_read": 1,
+    "separate_quality_cross_task_verdict_read": 1,
+    "integrated_browser_ui": 1
+  },
+  "main_feedback_messages_requiring_fixes": 0,
+  "feedback_fix_rounds": 0,
+  "feedback_fix_commits": 0,
+  "normal_v2_implementation_commits": 2,
+  "shared_product_change_commits": 2,
+  "shared_contract_doc_only_commits": 1,
+  "shared_changes": [
+    "a96fdf6 baseline shell/styles/components",
+    "e545292 initial contract doc",
+    "f4dde60 v2 shared seed/contract/baseline sample"
+  ],
+  "conflicts": 0,
+  "base_updates": 2,
+  "base_update_method": "main merged shared-only integration commit into preserved v1 feature checkpoints",
+  "stale_submissions": 0,
+  "stale_inflow": 0,
+  "worker_runtime_proxies": [
+    {
+      "task": "TASK1",
+      "start_event_utc": "2026-10-27T16:57:38.706384+00:00",
+      "complete_reported_utc": "2026-10-27T16:59:29Z",
+      "wall_seconds_proxy": 110.293616,
+      "commit": "2dfbacc481e289ee74fc701d2d35d707b42bdb64"
+    },
+    {
+      "task": "TASK2",
+      "start_event_utc": "2026-10-27T16:57:38.706384+00:00",
+      "complete_reported_utc": "2026-10-27T16:59:26Z",
+      "wall_seconds_proxy": 107.293616,
+      "commit": "91df9ee5190400ba9cd621590e2d5f805eb5f9a5"
+    },
+    {
+      "task": "TASK2",
+      "start_event_utc": "2026-10-27T17:02:16.013136+00:00",
+      "complete_reported_utc": "2026-10-27T17:03:17Z",
+      "wall_seconds_proxy": 60.986864,
+      "commit": "fac11fcc45f750b85c7e5d706a3a7ade926a9eeb"
+    },
+    {
+      "task": "TASK1",
+      "start_event_utc": "2026-10-27T17:02:16.013044+00:00",
+      "complete_reported_utc": "2026-10-27T17:04:04Z",
+      "wall_seconds_proxy": 107.986956,
+      "commit": "bd39f49cb307830cbdd20a49f5b6202d2b8681d3"
+    }
+  ],
+  "runtime_proxy_limit": "Wall interval from coordinator dispatch/resume log to worker-reported ready; not CPU/model token runtime; main includes orchestration and waiting",
+  "management_inventory_scope": "Explicit planning/contract/packet/registry/readiness/review/report/event/digest files; excludes test scripts, execution logs, diffs, screenshots and this metrics file itself",
+  "management_files": 20,
+  "management_lines": 512,
+  "management_inventory": [
+    {
+      "path": "evidence/arm-report.md",
+      "lines": 17
+    },
+    {
+      "path": "evidence/events.jsonl",
+      "lines": 35
+    },
+    {
+      "path": "evidence/final-ready.json",
+      "lines": 58
+    },
+    {
+      "path": "evidence/input-digests.json",
+      "lines": 7
+    },
+    {
+      "path": "evidence/main-diff-review.md",
+      "lines": 7
+    },
+    {
+      "path": "evidence/management.md",
+      "lines": 15
+    },
+    {
+      "path": "evidence/packet-v1.md",
+      "lines": 10
+    },
+    {
+      "path": "evidence/packet-v2.md",
+      "lines": 7
+    },
+    {
+      "path": "evidence/plan-sha256.txt",
+      "lines": 1
+    },
+    {
+      "path": "evidence/review-cross-task.md",
+      "lines": 21
+    },
+    {
+      "path": "evidence/review-quality.json",
+      "lines": 45
+    },
+    {
+      "path": "evidence/review-spec.json",
+      "lines": 51
+    },
+    {
+      "path": "evidence/task-registry.json",
+      "lines": 53
+    },
+    {
+      "path": "evidence/task1-v1-report.md",
+      "lines": 24
+    },
+    {
+      "path": "evidence/task1-v2-report.md",
+      "lines": 30
+    },
+    {
+      "path": "evidence/task2-v1-report.md",
+      "lines": 25
+    },
+    {
+      "path": "evidence/task2-v2-report.md",
+      "lines": 27
+    },
+    {
+      "path": "evidence/v1-ready.json",
+      "lines": 61
+    },
+    {
+      "path": "repo/docs/ui-contract-v1.md",
+      "lines": 9
+    },
+    {
+      "path": "repo/docs/ui-contract-v2.md",
+      "lines": 9
+    }
+  ],
+  "final_code_numstat": [
+    {
+      "path": "docs/ui-contract-v1.md",
+      "added": 9,
+      "deleted": 0,
+      "category": "management"
+    },
+    {
+      "path": "docs/ui-contract-v2.md",
+      "added": 9,
+      "deleted": 0,
+      "category": "management"
+    },
+    {
+      "path": "features/create_api.py",
+      "added": 34,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "features/list_api.py",
+      "added": 14,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "seed.json",
+      "added": 8,
+      "deleted": 2,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "tests/test_create.py",
+      "added": 61,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "tests/test_list.py",
+      "added": 48,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/baseline.html",
+      "added": 23,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/create.html",
+      "added": 43,
+      "deleted": 1,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/create.js",
+      "added": 45,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/requests.html",
+      "added": 30,
+      "deleted": 1,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/requests.js",
+      "added": 58,
+      "deleted": 0,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/shared.css",
+      "added": 28,
+      "deleted": 1,
+      "category": "product_and_tests"
+    },
+    {
+      "path": "web/shared.js",
+      "added": 22,
+      "deleted": 1,
+      "category": "product_and_tests"
+    }
+  ],
+  "final_product_and_tests_delta": {
+    "added": 414,
+    "deleted": 6
+  },
+  "final_repo_management_delta": {
+    "added": 18,
+    "deleted": 0
+  },
+  "tokens": "unmeasured: not exposed",
+  "money": "unmeasured: not exposed",
+  "infrastructure_wait_duration": "unmeasured precisely; included in actor wall elapsed",
+  "evaluation_wait": "none before first completion"
+}

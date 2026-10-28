@@ -1,0 +1,13 @@
+{
+  "standalone": true,
+  "images_loaded": 8,
+  "embedded_documents": 19,
+  "local_references": 0,
+  "missing_anchors": 0,
+  "evidence_click_opens": true,
+  "role_difference_explained": true,
+  "v2_redevelopment_exclusion_explained": true,
+  "page_errors": [],
+  "external_network_requests": [],
+  "desktop_mobile_no_overflow": true
+}

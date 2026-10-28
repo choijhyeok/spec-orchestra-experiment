@@ -1,0 +1,21 @@
+{
+  "arm": "A",
+  "first_completion_utc": "2026-10-27T17:09:19.406619+00:00",
+  "head": "57f1981bffb040f3b42467dceefd7cb63b8e0c2e",
+  "branch": "integration/a",
+  "repo": "apps/A",
+  "status": "complete_pending_independent_root_evaluation",
+  "unit_tests_passed": 13,
+  "integrated_browser_pass": true,
+  "self_ui6_assessment": 6,
+  "review_rounds": 0,
+  "unresolved": [],
+  "stale_submissions": 0,
+  "stale_inflow": 0,
+  "evidence": {
+    "report": "[original-experiment-root]/arms/A/evidence/arm-report.md",
+    "metrics": "[original-experiment-root]/arms/A/evidence/metrics.json",
+    "integration": "[original-experiment-root]/arms/A/evidence/integration-browser-result.json",
+    "main_review": "[original-experiment-root]/arms/A/evidence/main-integration-review.md"
+  }
+}

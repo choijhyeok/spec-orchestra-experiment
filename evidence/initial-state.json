@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-10-27T16:54:14.208375+00:00",
+  "arms": {
+    "A": {
+      "initial_head": "83d4cb183323b69e5b42aad5761d4478dde09a00",
+      "files": 9
+    },
+    "B": {
+      "initial_head": "83d4cb183323b69e5b42aad5761d4478dde09a00",
+      "files": 9
+    }
+  },
+  "plan_sha256": "8310dc811b4ac30d90df12baf85be55ab1ad2ef96ec724de545238dc4d3e7396"
+}

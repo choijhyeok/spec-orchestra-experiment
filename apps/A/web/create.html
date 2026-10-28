@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>New request · Request Desk</title>
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="stylesheet" href="/create.css">
+  <script src="/shared.js" defer></script>
+  <script src="/create.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main>
+    <div class="page-heading">
+      <h1>New request</h1>
+      <p>Add a request and its requester details. All fields are required.</p>
+    </div>
+    <form id="create-form" class="card" novalidate>
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text" required aria-describedby="title-hint">
+        <span id="title-hint" class="muted">1–80 characters</span>
+      </div>
+      <div class="field">
+        <label for="requester-name">Requester name</label>
+        <input id="requester-name" name="requester-name" type="text" autocomplete="name" required aria-describedby="requester-name-hint">
+        <span id="requester-name-hint" class="muted">1–60 characters</span>
+      </div>
+      <div class="field">
+        <label for="requester-email">Requester email</label>
+        <input id="requester-email" name="requester-email" type="email" autocomplete="email" required aria-describedby="requester-email-hint">
+        <span id="requester-email-hint" class="muted">For example, arin@example.test</span>
+      </div>
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <button type="submit">Create request</button>
+    </form>
+    <div id="create-result" class="success" role="status" aria-live="polite" hidden>
+      <p id="success-message"></p>
+      <a href="/requests">View requests</a>
+    </div>
+    <noscript><p class="error">Enable JavaScript to create a request.</p></noscript>
+  </main>
+</body>
+</html>

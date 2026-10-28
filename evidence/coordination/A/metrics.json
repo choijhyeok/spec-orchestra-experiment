@@ -1,0 +1,216 @@
+{
+  "recorded_utc": "2026-10-27T17:09:19.406619+00:00",
+  "head": "57f1981bffb040f3b42467dceefd7cb63b8e0c2e",
+  "agent_starts_including_main": 5,
+  "child_agent_starts": 4,
+  "agent_turn_dispatches_including_main_initial_and_resume": 8,
+  "main_task_source_reviews": 2,
+  "independent_spec_reviews": 2,
+  "independent_quality_reviews": 2,
+  "cross_task_source_reviews": 1,
+  "review_feedback_rounds": 0,
+  "review_rework_commits": 0,
+  "shared_change_commits": 2,
+  "shared_seed_cherry_picks": 2,
+  "merge_conflicts": 0,
+  "stale_submissions": 0,
+  "stale_inflow": 0,
+  "validation_harness_corrections": 1,
+  "elapsed_seconds_from_recorded_actor_start": 809.790574,
+  "barrier_wait_seconds": 36.558236,
+  "active_elapsed_seconds_excluding_common_barrier": 773.232338,
+  "infrastructure_wait_seconds": "not independently measurable; sandbox failure/approval logs preserved",
+  "token_usage": "not exposed",
+  "financial_cost": "not exposed",
+  "diff_numstat": [
+    "40\t0\tfeatures/create_api.py",
+    "14\t0\tfeatures/list_api.py",
+    "8\t2\tseed.json",
+    "91\t0\ttests/test_create.py",
+    "53\t0\ttests/test_list.py",
+    "4\t0\tweb/create.css",
+    "45\t1\tweb/create.html",
+    "77\t0\tweb/create.js",
+    "37\t1\tweb/requests.html",
+    "67\t0\tweb/requests.js",
+    "36\t1\tweb/shared.css",
+    "25\t1\tweb/shared.js"
+  ],
+  "implementation_agent_wall_intervals_proxy": [
+    {
+      "task": "task1",
+      "phase": "worker_dispatch",
+      "dispatch": "2026-10-27T16:56:20.384824+00:00",
+      "reported_complete": "2026-10-27T17:00:10.363501+00:00",
+      "wall_seconds_proxy": 229.978677
+    },
+    {
+      "task": "task1",
+      "phase": "worker_resume",
+      "dispatch": "2026-10-27T17:01:44.292168+00:00",
+      "reported_complete": "2026-10-27T17:04:11.204617+00:00",
+      "wall_seconds_proxy": 146.912449
+    },
+    {
+      "task": "task2",
+      "phase": "worker_dispatch",
+      "dispatch": "2026-10-27T16:56:20.384824+00:00",
+      "reported_complete": "2026-10-27T16:59:36.401267+00:00",
+      "wall_seconds_proxy": 196.016443
+    },
+    {
+      "task": "task2",
+      "phase": "worker_resume",
+      "dispatch": "2026-10-27T17:01:44.292249+00:00",
+      "reported_complete": "2026-10-27T17:04:11.217791+00:00",
+      "wall_seconds_proxy": 146.925542
+    }
+  ],
+  "operational_document_inventory_before_final_report": {
+    "definition": "all existing evidence .md/.json/.jsonl, includes validation metadata; scripts/logs/images/diffs excluded",
+    "files": [
+      {
+        "file": "actor-start.json",
+        "lines": 7
+      },
+      {
+        "file": "events.jsonl",
+        "lines": 22
+      },
+      {
+        "file": "integration-browser-result.json",
+        "lines": 132
+      },
+      {
+        "file": "integration-checks.json",
+        "lines": 58
+      },
+      {
+        "file": "main-source-review.json",
+        "lines": 19
+      },
+      {
+        "file": "model-acceptance.json",
+        "lines": 15
+      },
+      {
+        "file": "review-task1-quality-ui-checks.json",
+        "lines": 13
+      },
+      {
+        "file": "review-task1-quality.md",
+        "lines": 22
+      },
+      {
+        "file": "review-task1-spec-checks.json",
+        "lines": 47
+      },
+      {
+        "file": "review-task1-spec.md",
+        "lines": 21
+      },
+      {
+        "file": "review-task2-quality.md",
+        "lines": 22
+      },
+      {
+        "file": "review-task2-spec.md",
+        "lines": 24
+      },
+      {
+        "file": "task1-browser-result.json",
+        "lines": 11
+      },
+      {
+        "file": "task1-candidate.json",
+        "lines": 15
+      },
+      {
+        "file": "task1-diff-check.json",
+        "lines": 9
+      },
+      {
+        "file": "task1-dispatch.json",
+        "lines": 14
+      },
+      {
+        "file": "task1-escalations.json",
+        "lines": 23
+      },
+      {
+        "file": "task1-js-syntax.json",
+        "lines": 9
+      },
+      {
+        "file": "task1-self-review.md",
+        "lines": 13
+      },
+      {
+        "file": "task1-unit.json",
+        "lines": 13
+      },
+      {
+        "file": "task1-v2-browser-result.json",
+        "lines": 14
+      },
+      {
+        "file": "task1-v2-candidate.json",
+        "lines": 19
+      },
+      {
+        "file": "task1-v2-diff-check.json",
+        "lines": 9
+      },
+      {
+        "file": "task1-v2-dispatch.json",
+        "lines": 10
+      },
+      {
+        "file": "task1-v2-escalations.json",
+        "lines": 22
+      },
+      {
+        "file": "task1-v2-js-syntax.json",
+        "lines": 9
+      },
+      {
+        "file": "task1-v2-self-review.md",
+        "lines": 15
+      },
+      {
+        "file": "task1-v2-unit.json",
+        "lines": 13
+      },
+      {
+        "file": "task2-candidate.md",
+        "lines": 11
+      },
+      {
+        "file": "task2-dispatch.md",
+        "lines": 8
+      },
+      {
+        "file": "task2-self-review.md",
+        "lines": 14
+      },
+      {
+        "file": "task2-v2-candidate.md",
+        "lines": 16
+      },
+      {
+        "file": "task2-v2-dispatch.md",
+        "lines": 8
+      },
+      {
+        "file": "task2-v2-self-review.md",
+        "lines": 14
+      },
+      {
+        "file": "v1-ready.json",
+        "lines": 42
+      }
+    ],
+    "count": 35,
+    "lines": 733
+  }
+}

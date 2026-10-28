@@ -1,0 +1,509 @@
+{
+  "date": "2026-10-27 UTC",
+  "arms": {
+    "A": {
+      "head": "57f1981bffb040f3b42467dceefd7cb63b8e0c2e",
+      "head_matches_independent_evaluation": true,
+      "working_tree_clean": true,
+      "pass": 19,
+      "total": 19,
+      "ui": 6,
+      "ui_scores": {
+        "shell": true,
+        "navigation": true,
+        "width": true,
+        "typography": true,
+        "spacing": true,
+        "components": true
+      },
+      "stale_submissions": 0,
+      "stale_inflow": 0,
+      "initial_defects": 0,
+      "review_fix_rounds": 0,
+      "root_fix_rounds": 0,
+      "started_utc": "2026-10-27T16:55:49.616045+00:00",
+      "first_complete_utc": "2026-10-27T17:09:19.406619+00:00",
+      "barrier_enter_utc": "2026-10-27T17:00:10.363501+00:00",
+      "barrier_exit_common_utc": "2026-10-27T17:00:46.921737+00:00",
+      "total_seconds": 809.790574,
+      "barrier_seconds": 36.558236,
+      "active_seconds": 773.232338,
+      "agent_starts": 5,
+      "agent_turn_invocations": 8,
+      "reviewer_agents": 2,
+      "operational_files": 39,
+      "operational_lines": 1009,
+      "operational_inventory": [
+        {
+          "path": "evidence/actor-start.json",
+          "lines": 7
+        },
+        {
+          "path": "evidence/arm-report.md",
+          "lines": 26
+        },
+        {
+          "path": "evidence/events.jsonl",
+          "lines": 24
+        },
+        {
+          "path": "evidence/final-ready.json",
+          "lines": 21
+        },
+        {
+          "path": "evidence/integration-browser-result.json",
+          "lines": 132
+        },
+        {
+          "path": "evidence/integration-checks.json",
+          "lines": 58
+        },
+        {
+          "path": "evidence/main-integration-review.md",
+          "lines": 11
+        },
+        {
+          "path": "evidence/main-source-review.json",
+          "lines": 19
+        },
+        {
+          "path": "evidence/metrics.json",
+          "lines": 216
+        },
+        {
+          "path": "evidence/model-acceptance.json",
+          "lines": 15
+        },
+        {
+          "path": "evidence/review-task1-quality-ui-checks.json",
+          "lines": 13
+        },
+        {
+          "path": "evidence/review-task1-quality.md",
+          "lines": 22
+        },
+        {
+          "path": "evidence/review-task1-spec-checks.json",
+          "lines": 47
+        },
+        {
+          "path": "evidence/review-task1-spec.md",
+          "lines": 21
+        },
+        {
+          "path": "evidence/review-task2-quality.md",
+          "lines": 22
+        },
+        {
+          "path": "evidence/review-task2-spec.md",
+          "lines": 24
+        },
+        {
+          "path": "evidence/task1-browser-result.json",
+          "lines": 11
+        },
+        {
+          "path": "evidence/task1-candidate.json",
+          "lines": 15
+        },
+        {
+          "path": "evidence/task1-diff-check.json",
+          "lines": 9
+        },
+        {
+          "path": "evidence/task1-dispatch.json",
+          "lines": 14
+        },
+        {
+          "path": "evidence/task1-escalations.json",
+          "lines": 23
+        },
+        {
+          "path": "evidence/task1-js-syntax.json",
+          "lines": 9
+        },
+        {
+          "path": "evidence/task1-self-review.md",
+          "lines": 13
+        },
+        {
+          "path": "evidence/task1-unit.json",
+          "lines": 13
+        },
+        {
+          "path": "evidence/task1-v2-browser-result.json",
+          "lines": 14
+        },
+        {
+          "path": "evidence/task1-v2-candidate.json",
+          "lines": 19
+        },
+        {
+          "path": "evidence/task1-v2-diff-check.json",
+          "lines": 9
+        },
+        {
+          "path": "evidence/task1-v2-dispatch.json",
+          "lines": 10
+        },
+        {
+          "path": "evidence/task1-v2-escalations.json",
+          "lines": 22
+        },
+        {
+          "path": "evidence/task1-v2-js-syntax.json",
+          "lines": 9
+        },
+        {
+          "path": "evidence/task1-v2-self-review.md",
+          "lines": 15
+        },
+        {
+          "path": "evidence/task1-v2-unit.json",
+          "lines": 13
+        },
+        {
+          "path": "evidence/task2-candidate.md",
+          "lines": 11
+        },
+        {
+          "path": "evidence/task2-dispatch.md",
+          "lines": 8
+        },
+        {
+          "path": "evidence/task2-self-review.md",
+          "lines": 14
+        },
+        {
+          "path": "evidence/task2-v2-candidate.md",
+          "lines": 16
+        },
+        {
+          "path": "evidence/task2-v2-dispatch.md",
+          "lines": 8
+        },
+        {
+          "path": "evidence/task2-v2-self-review.md",
+          "lines": 14
+        },
+        {
+          "path": "evidence/v1-ready.json",
+          "lines": 42
+        }
+      ],
+      "commits": 10,
+      "additions": 497,
+      "deletions": 6,
+      "numstat": [
+        {
+          "path": "features/create_api.py",
+          "added": 40,
+          "deleted": 0
+        },
+        {
+          "path": "features/list_api.py",
+          "added": 14,
+          "deleted": 0
+        },
+        {
+          "path": "seed.json",
+          "added": 8,
+          "deleted": 2
+        },
+        {
+          "path": "tests/test_create.py",
+          "added": 91,
+          "deleted": 0
+        },
+        {
+          "path": "tests/test_list.py",
+          "added": 53,
+          "deleted": 0
+        },
+        {
+          "path": "web/create.css",
+          "added": 4,
+          "deleted": 0
+        },
+        {
+          "path": "web/create.html",
+          "added": 45,
+          "deleted": 1
+        },
+        {
+          "path": "web/create.js",
+          "added": 77,
+          "deleted": 0
+        },
+        {
+          "path": "web/requests.html",
+          "added": 37,
+          "deleted": 1
+        },
+        {
+          "path": "web/requests.js",
+          "added": 67,
+          "deleted": 0
+        },
+        {
+          "path": "web/shared.css",
+          "added": 36,
+          "deleted": 1
+        },
+        {
+          "path": "web/shared.js",
+          "added": 25,
+          "deleted": 1
+        }
+      ],
+      "unit_tests": 13,
+      "validation_harness_corrections": 1,
+      "money": "unmeasured",
+      "tokens": "unmeasured"
+    },
+    "B": {
+      "head": "42202c03eb19d84833386b26742fc6f78aa5b222",
+      "head_matches_independent_evaluation": true,
+      "working_tree_clean": true,
+      "pass": 19,
+      "total": 19,
+      "ui": 6,
+      "ui_scores": {
+        "shell": true,
+        "navigation": true,
+        "width": true,
+        "typography": true,
+        "spacing": true,
+        "components": true
+      },
+      "stale_submissions": 0,
+      "stale_inflow": 0,
+      "initial_defects": 0,
+      "review_fix_rounds": 0,
+      "root_fix_rounds": 0,
+      "started_utc": "2026-10-27T16:55:20Z",
+      "first_complete_utc": "2026-10-27T17:08:29.281793+00:00",
+      "barrier_enter_utc": "2026-10-27T17:00:25.467270+00:00",
+      "barrier_exit_common_utc": "2026-10-27T17:00:46.921737+00:00",
+      "total_seconds": 789.281793,
+      "barrier_seconds": 21.454467,
+      "active_seconds": 767.827326,
+      "agent_starts": 4,
+      "agent_turn_invocations": 7,
+      "reviewer_agents": 1,
+      "operational_files": 27,
+      "operational_lines": 1429,
+      "operational_inventory": [
+        {
+          "path": "evidence/arm-report.md",
+          "lines": 17
+        },
+        {
+          "path": "evidence/baseline-results.json",
+          "lines": 48
+        },
+        {
+          "path": "evidence/cost-metrics.json",
+          "lines": 253
+        },
+        {
+          "path": "evidence/events.jsonl",
+          "lines": 35
+        },
+        {
+          "path": "evidence/final-ready.json",
+          "lines": 58
+        },
+        {
+          "path": "evidence/input-digests.json",
+          "lines": 7
+        },
+        {
+          "path": "evidence/integration-results.json",
+          "lines": 323
+        },
+        {
+          "path": "evidence/main-diff-review.md",
+          "lines": 7
+        },
+        {
+          "path": "evidence/management.md",
+          "lines": 15
+        },
+        {
+          "path": "evidence/packet-v1.md",
+          "lines": 10
+        },
+        {
+          "path": "evidence/packet-v2.md",
+          "lines": 7
+        },
+        {
+          "path": "evidence/review-cross-task-adapter.json",
+          "lines": 9
+        },
+        {
+          "path": "evidence/review-cross-task.md",
+          "lines": 21
+        },
+        {
+          "path": "evidence/review-quality.json",
+          "lines": 45
+        },
+        {
+          "path": "evidence/review-spec.json",
+          "lines": 51
+        },
+        {
+          "path": "evidence/task-registry.json",
+          "lines": 53
+        },
+        {
+          "path": "evidence/task1-browser-results.json",
+          "lines": 87
+        },
+        {
+          "path": "evidence/task1-v1-report.md",
+          "lines": 24
+        },
+        {
+          "path": "evidence/task1-v2-browser-results.json",
+          "lines": 176
+        },
+        {
+          "path": "evidence/task1-v2-report.md",
+          "lines": 30
+        },
+        {
+          "path": "evidence/task2-browser-results.json",
+          "lines": 11
+        },
+        {
+          "path": "evidence/task2-v1-report.md",
+          "lines": 25
+        },
+        {
+          "path": "evidence/task2-v2-browser-results.json",
+          "lines": 11
+        },
+        {
+          "path": "evidence/task2-v2-report.md",
+          "lines": 27
+        },
+        {
+          "path": "evidence/v1-ready.json",
+          "lines": 61
+        },
+        {
+          "path": "repo/docs/ui-contract-v1.md",
+          "lines": 9
+        },
+        {
+          "path": "repo/docs/ui-contract-v2.md",
+          "lines": 9
+        }
+      ],
+      "commits": 11,
+      "additions": 432,
+      "deletions": 6,
+      "numstat": [
+        {
+          "path": "docs/ui-contract-v1.md",
+          "added": 9,
+          "deleted": 0
+        },
+        {
+          "path": "docs/ui-contract-v2.md",
+          "added": 9,
+          "deleted": 0
+        },
+        {
+          "path": "features/create_api.py",
+          "added": 34,
+          "deleted": 0
+        },
+        {
+          "path": "features/list_api.py",
+          "added": 14,
+          "deleted": 0
+        },
+        {
+          "path": "seed.json",
+          "added": 8,
+          "deleted": 2
+        },
+        {
+          "path": "tests/test_create.py",
+          "added": 61,
+          "deleted": 0
+        },
+        {
+          "path": "tests/test_list.py",
+          "added": 48,
+          "deleted": 0
+        },
+        {
+          "path": "web/baseline.html",
+          "added": 23,
+          "deleted": 0
+        },
+        {
+          "path": "web/create.html",
+          "added": 43,
+          "deleted": 1
+        },
+        {
+          "path": "web/create.js",
+          "added": 45,
+          "deleted": 0
+        },
+        {
+          "path": "web/requests.html",
+          "added": 30,
+          "deleted": 1
+        },
+        {
+          "path": "web/requests.js",
+          "added": 58,
+          "deleted": 0
+        },
+        {
+          "path": "web/shared.css",
+          "added": 28,
+          "deleted": 1
+        },
+        {
+          "path": "web/shared.js",
+          "added": 22,
+          "deleted": 1
+        }
+      ],
+      "unit_tests": 9,
+      "validation_harness_corrections": 0,
+      "money": "unmeasured",
+      "tokens": "unmeasured"
+    }
+  },
+  "timing_definition": "Recorded actor start to first_complete. Common barrier = declared main barrier-entry to root publication 2026-10-27T17:00:46.921737Z for BOTH arms; reading/packet/resume after publication counted as active elapsed. These are wall intervals, not compute time.",
+  "conclusion": "이번 작은 사례에서 세 보완 규칙의 품질·재작업 감소 효과는 확인하지 못했습니다. A와 B 모두 독립 평가 19/19, UI 6/6, 구형 명세 유입·수정 라운드 0이었습니다. B의 구조화된 변경 기록은 확인했지만 대규모 전용 실행기 개발을 정당화할 근거는 아직 부족합니다.",
+  "findings": [
+    "동일 독립 스크립트로 최초 완료 HEAD를 평가했고 양쪽 모두 19/19, UI6/6이었습니다. 8장의 실제 desktop/mobile 화면과 최종 API·화면 JS·shared helper diff를 root가 검토했으며 추가 결함을 발견하지 못했습니다.",
+    "A도 공통 CSS/nav를 먼저 마련하고 변경된 seed를 각 worktree에 반영했으며, 최종 통합 browser 검증을 자발적으로 수행했습니다. 따라서 추가 규칙이 없으면 반드시 실패한다는 전제는 이 사례에서 성립하지 않았습니다.",
+    "두 조건 모두 stale 최종 제출/유입, review 피드백 수정, Git 충돌이0입니다. 정상적인 v1→v2 구현은 재작업 결함으로 세지 않았습니다.",
+    "B는 실제 실행 가능한 baseline 화면과 계약 문서2개·task packet2개·task registry·관리 기록을 남겨 기준 버전과 영향/갱신 과정을 명시했습니다. A는 이에 대응하는 형식적 registry 없이도 이 변경을 처리했습니다.",
+    "공통 대기 종료를 동일한 root 변경 공개 시각으로 재계산하면 A 약12분53초, B 약12분48초로 차이는 약5초입니다. 한 번의 경과시간이며 속도 우위 근거가 아닙니다. 각 main의 원래 시간 기록도 보존했습니다.",
+    "A는 agent5명/turn8회, B는 agent4명/turn7회였습니다. A가 기능별 reviewer2명, B가 reviewer1명을 택한 차이가 있어 전체 기록량과 시간·코드량을 세 규칙의 순수 비용으로 해석할 수 없습니다.",
+    "A의 브라우저 locator 오류 수정1회는 테스트 harness 수정이며 제품 결함이나 review 피드백 수정으로 세지 않았습니다. 같은 root 평가에는 이 문제가 없었고 양쪽에 동일 스크립트를 사용했습니다.",
+    "권고: 새 대규모 orchestration 실행기·게시보다 공통 기준 화면/명세 버전·변경 영향 체크리스트를 얇게 유지하고 실제 프로젝트에서 반복 검증하는 편이 타당합니다. 이번 실험은 품질 우월성이나 재작업 감소를 입증하지 않았습니다."
+  ],
+  "limitations": [
+    "단일 비맹검 합성 앱, 기능2개, 메모리 저장소이며 실제 서비스의 규모·공유 DB migration·복잡한 화면을 대표하지 않습니다. 일반적 우월성·통계적 유의성은 주장하지 않습니다.",
+    "변경은 두 v1 최초 후보가 나온 뒤 최종 검토·통합 전에 전달했습니다. 공통 barrier로 실제 실행 중 변경 경쟁이 줄었으므로 늦은 제출/중단 실패/오래된 증거 유입을 견디는 능력은 충분히 검증되지 않았습니다. 인위적 실패/오래된 제출은 주입하지 않았습니다.",
+    "양쪽에 동일한 UI 제품 요구를 주었고 A의 좋은 자율 판단도 허용했습니다. A가 보완 규칙의 일부를 자발적으로 채택했으므로 명문화의 강제 효과를 따로 분리할 수 없습니다.",
+    "요청 모델은 모든 main/worker/reviewer gpt-6.1-sol/high였고 호출은 수락됐으나 실제 backend model/reasoning attestation은 도구에서 노출되지 않았습니다. 원본 plugin의 설치 실행이 아닌 규칙 기반 재현입니다.",
+    "동일 동시 구현자2/활성25분 한도를 적용했지만 reviewer 수와 자체 테스트 수, 기록 형식은 자율 선택으로 달랐습니다. 토큰·금액·정확한 CPU 시간·인프라 승인 대기 시간은 미측정입니다.",
+    "root 독립 평가19개와 UI6항목은 명시된 범위의 확인이며 모든 결함 부재의 증명은 아닙니다. 개별 테스트 수13개/9개의 차이를 품질 점수로 사용하지 않았습니다.",
+    "소스/증거는 로컬에 보존했습니다. 실험 서버는 종료했고 GitHub 저장소 생성·push·배포는 하지 않았습니다. 기존 스킬 골격은 미완성 상태로 그대로 보존했습니다."
+  ],
+  "preregistration_unchanged": true
+}

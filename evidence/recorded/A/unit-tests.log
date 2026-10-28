@@ -1,0 +1,18 @@
+test_accepts_basic_email_variants_and_trims_whitespace (test_create.CreateRequestTests) ... ok
+test_accepts_inclusive_character_limits_and_unicode (test_create.CreateRequestTests) ... ok
+test_creates_trimmed_v2_request_with_server_generated_unique_id (test_create.CreateRequestTests) ... ok
+test_preserves_html_as_plain_data (test_create.CreateRequestTests) ... ok
+test_rejects_invalid_email_types_and_basic_shapes (test_create.CreateRequestTests) ... ok
+test_rejects_invalid_title_and_name_without_mutation (test_create.CreateRequestTests) ... ok
+test_rejects_non_object_missing_nested_fields_and_legacy_payload (test_create.CreateRequestTests) ... ok
+test_current_memory_records_are_visible_without_mutating_them (test_list.ListRequestsTests) ... ok
+test_encoded_and_repeated_query_use_first_value (test_list.ListRequestsTests) ... ok
+test_missing_and_empty_query_return_all_in_order (test_list.ListRequestsTests) ... ok
+test_no_match_and_no_records (test_list.ListRequestsTests) ... ok
+test_title_name_and_email_match_case_insensitive_substrings (test_list.ListRequestsTests) ... ok
+test_v2_response_contains_requester_without_legacy_contact (test_list.ListRequestsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.001s
+
+OK

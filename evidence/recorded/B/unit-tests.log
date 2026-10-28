@@ -1,0 +1,14 @@
+test_boundary_lengths_unicode_and_html_remain_text (test_create.CreateTests) ... ok
+test_creation_trims_v2_fields_generates_ids_and_retains_records (test_create.CreateTests) ... ok
+test_invalid_v2_and_legacy_payloads_never_mutate_records (test_create.CreateTests) ... ok
+test_missing_and_empty_query_return_all_in_order (test_list.ListRequestsTests) ... ok
+test_reads_current_shared_records (test_list.ListRequestsTests) ... ok
+test_search_does_not_mutate_records_or_escape_data (test_list.ListRequestsTests) ... ok
+test_title_name_and_email_substrings_ignore_case (test_list.ListRequestsTests) ... ok
+test_unmatched_and_empty_records (test_list.ListRequestsTests) ... ok
+test_v2_response_has_requester_and_no_legacy_contact (test_list.ListRequestsTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

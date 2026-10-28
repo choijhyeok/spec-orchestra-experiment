@@ -1,0 +1,28 @@
+:root { --primary:#2563eb; --space:24px; --radius:8px; --ink:#172033; --muted:#526176; --border:#cbd5e1; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:16px; color:var(--ink); background:#f5f7fb; }
+* { box-sizing:border-box; }
+body { margin:0; font-size:16px; line-height:1.5; }
+a { color:var(--primary); text-underline-offset:3px; }
+.site-header { background:#fff; border-bottom:1px solid var(--border); }
+.header-inner, main { width:100%; max-width:960px; margin:0 auto; padding:24px; }
+.header-inner { display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+.brand { font-size:20px; font-weight:700; color:var(--ink); text-decoration:none; }
+nav { display:flex; gap:24px; flex-wrap:wrap; }
+nav a { padding:8px 0; text-decoration:none; }
+nav a[aria-current="page"] { color:var(--ink); font-weight:700; box-shadow:0 2px var(--primary); }
+main, .stack { display:flex; flex-direction:column; gap:24px; }
+h1,h2,p { margin:0; overflow-wrap:anywhere; }
+h1 { font-size:28px; line-height:1.25; }
+h2 { font-size:20px; }
+.card { border:1px solid var(--border); border-radius:8px; background:#fff; padding:24px; min-width:0; }
+.field { display:flex; flex-direction:column; gap:8px; min-width:0; }
+label { font-weight:600; }
+input { display:block; width:100%; min-width:0; min-height:44px; padding:10px 12px; border:1px solid #94a3b8; border-radius:8px; font:inherit; color:inherit; background:#fff; }
+button,.button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 16px; border:1px solid var(--primary); border-radius:8px; font:inherit; font-weight:600; color:#fff; background:var(--primary); text-decoration:none; cursor:pointer; }
+button:disabled { opacity:.65; cursor:wait; }
+button:focus-visible,input:focus-visible,a:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
+.actions { display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
+.muted { color:var(--muted); }
+.error { color:#b91c1c; }
+.success { color:#166534; }
+[hidden] { display:none !important; }
+@media(max-width:600px) { .header-inner,main { padding:24px 16px; } .header-inner { align-items:flex-start; } .card { padding:24px; } }

@@ -1,0 +1,13 @@
+{
+  "reviewed_utc": "2026-10-28T02:12:02.533103+09:00",
+  "reviewer": "root",
+  "screenshots_inspected": 8,
+  "api_js_shared_diff_reviewed": true,
+  "ui6_manual_confirmation": {
+    "A": 6,
+    "B": 6
+  },
+  "additional_findings": [],
+  "product_or_test_changes_after_first_completion": false,
+  "primary_evaluator_hash_unchanged": true
+}

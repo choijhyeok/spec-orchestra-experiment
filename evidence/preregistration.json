@@ -1,0 +1,12 @@
+{
+  "frozen_utc": "2026-10-27T16:57:27.825684+00:00",
+  "files": {
+    "experiment-plan.md": "8310dc811b4ac30d90df12baf85be55ab1ad2ef96ec724de545238dc4d3e7396",
+    "common/spec-v1.md": "4fa7c27d389130018de193f99ca8db3b552a1c7f4739205a58f6eb9791489668",
+    "common/protocol-A.md": "46153ac650e012a927c05900e180a9061bab2a02a13b53ccb3a97981e4a60d19",
+    "common/protocol-B.md": "70b437f33ae33c5cc4ea3c22a37e105d652764d6c5224e87aa1c023763fca844",
+    "control/spec-v2.md": "eb90c3bed2bc4fddfe74b0c2bb63c6138097948ba53c48b6a1a03967332bd31b",
+    "tooling/evaluate.cjs": "10faba85fe0ed594b52b7664ef18e1e71d4df6e6151b03669746047d9db7c3bf"
+  },
+  "note": "No arm implementation or intermediate artifacts inspected by root before evaluator freeze. Search locator accepts either search/text input role."
+}

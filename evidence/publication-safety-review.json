@@ -1,0 +1,21 @@
+{
+  "publication_files_scanned": 99,
+  "sensitive_findings": [],
+  "missing_markdown_links": [],
+  "report_images_embedded": true,
+  "report_missing_fragments": [],
+  "report_external_asset_dependencies": [],
+  "source_snapshots_identical": true,
+  "history_strategy": "new one-commit history; original nested histories excluded",
+  "original_outcomes_unchanged": true,
+  "excluded": [
+    "original nested .git and worktree metadata",
+    "raw agent conversations",
+    "Library identifiers and transfer helpers",
+    "cache, bytecode, node_modules",
+    "personal absolute paths",
+    "unrelated stock/account/company data"
+  ],
+  "note": "Pattern checks plus selected-content review; no claim that scanning mathematically proves absence of secrets.",
+  "final_file_bytes": 1495736
+}

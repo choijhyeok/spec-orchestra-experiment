@@ -1,0 +1,18 @@
+[
+  {
+    "id": "seed-1",
+    "title": "Review welcome copy",
+    "requester": {
+      "name": "Mina Park",
+      "email": "mina@example.test"
+    }
+  },
+  {
+    "id": "seed-2",
+    "title": "Check mobile menu",
+    "requester": {
+      "name": "Jun Lee",
+      "email": "jun@example.test"
+    }
+  }
+]

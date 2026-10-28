@@ -1,0 +1,526 @@
+diff --git a/docs/ui-contract-v1.md b/docs/ui-contract-v1.md
+new file mode 100644
+index 0000000..1447877
+--- /dev/null
++++ b/docs/ui-contract-v1.md
+@@ -0,0 +1,9 @@
++# UI / API contract v1
++
++Spec: common/spec-v1.md. Contract: v1. Baseline commit: a96fdf6.
++
++Every page uses UTF-8, responsive viewport, `/shared.css`, deferred `/shared.js`, `<header class="site-header" data-shell></header>` and a `<main>` containing task content. shared.js supplies identical Request Desk brand, navigation and aria-current. Do not duplicate or modify the shell in task code.
++
++Use `.stack` for 24px vertical groups, `.card.stack` for content panels, `.field` wrapping label and input, `.actions` for actions, `.muted`, `.error`, `.success` for messages. Native input/button and `.button` links consume shared components. Main max-width is 960px, system 16px, mobile outer spacing 16px. Use DOM textContent for user data. Task CSS only when necessary; shared changes require main coordination.
++
++TASK1 POST payload `{title, contact}` and response `{request:{id,title,contact}}`; TASK2 GET query q and response `{requests:[{id,title,contact}]}`. Both feature adapters return `(status, JSON-compatible dict)`. Records mutable list from server scaffold. Spec contains limits and validation requirements. No dependence on other worker implementation.
+diff --git a/docs/ui-contract-v2.md b/docs/ui-contract-v2.md
+new file mode 100644
+index 0000000..0c14477
+--- /dev/null
++++ b/docs/ui-contract-v2.md
+@@ -0,0 +1,9 @@
++# UI / API contract v2
++
++Authoritative input: common/spec-v2.md (sha256 eb90c3bed2bc4fddfe74b0c2bb63c6138097948ba53c48b6a1a03967332bd31b), applied on top of spec-v1. Replaces contract v1 data/API fields; common UI contract in ui-contract-v1.md remains.
++
++Request = `{id: string, title: string, requester: {name: string, email: string}}`. No contact field in response or seed. POST `{title, requester:{name,email}}` produces 201 `{request:Request}`. Invalid/missing types, title/name limits, missing or basic-invalid email produce 422 `{error:string}`; legacy contact-only payload rejected. Trim title/name/email before validation/storage. Basic email has nonempty local/domain, no whitespace and domain contains a dot.
++
++GET returns `{requests:Request[]}`, searches case-insensitive substring over title/requester.name/requester.email. Seed now includes Mina Park mina@example.test and Jun Lee jun@example.test.
++
++Create UI labels Title, Requester name, Requester email and Create request button. List displays title/name/email and keeps Search input/button. Consume the identical shared shell and components. Both tasks are affected. v1 candidate evidence remains checkpoint evidence only; v2 code/base changes require new unit/HTTP/browser verification and self-review before submission. Main rejects spec/contract v1 as a v2 final review/merge candidate.
+diff --git a/features/create_api.py b/features/create_api.py
+new file mode 100644
+index 0000000..3c6cb0c
+--- /dev/null
++++ b/features/create_api.py
+@@ -0,0 +1,34 @@
++"""Validate and create requests in the server's in-memory collection."""
++import re
++from uuid import uuid4
++
++
++EMAIL = re.compile(r"[^@\s]+@[^@\s.]+(?:\.[^@\s.]+)+")
++
++
++def create(payload, records):
++    if not isinstance(payload, dict):
++        return 422, {"error": "Provide a title and requester name and email."}
++
++    requester = payload.get("requester")
++    if not isinstance(requester, dict):
++        return 422, {"error": "Provide requester name and email."}
++    values = {}
++    for field, value, label, limit in (
++        ("title", payload.get("title"), "Title", 80),
++        ("name", requester.get("name"), "Requester name", 60),
++    ):
++        if not isinstance(value, str) or not 1 <= len(value.strip()) <= limit:
++            return 422, {"error": f"{label} must contain 1–{limit} characters."}
++        values[field] = value.strip()
++
++    email = requester.get("email")
++    if not isinstance(email, str) or not EMAIL.fullmatch(email.strip()):
++        return 422, {"error": "Enter a valid requester email, such as arin@example.test."}
++    request = {
++        "id": str(uuid4()),
++        "title": values["title"],
++        "requester": {"name": values["name"], "email": email.strip()},
++    }
++    records.append(request)
++    return 201, {"request": request}
+diff --git a/features/list_api.py b/features/list_api.py
+new file mode 100644
+index 0000000..bf94801
+--- /dev/null
++++ b/features/list_api.py
+@@ -0,0 +1,14 @@
++"""Read requests from the server's shared in-memory records."""
++
++
++def list_requests(query, records):
++    """Return all records or a title/requester substring match, ignoring case."""
++    search = query.get("q", [""])[0].casefold()
++    matches = [
++        record for record in records
++        if not search
++        or search in record["title"].casefold()
++        or search in record["requester"]["name"].casefold()
++        or search in record["requester"]["email"].casefold()
++    ]
++    return 200, {"requests": matches}
+diff --git a/seed.json b/seed.json
+index f967f84..d8ee948 100644
+--- a/seed.json
++++ b/seed.json
+@@ -2,11 +2,17 @@
+   {
+     "id": "seed-1",
+     "title": "Review welcome copy",
+-    "contact": "Mina Park"
++    "requester": {
++      "name": "Mina Park",
++      "email": "mina@example.test"
++    }
+   },
+   {
+     "id": "seed-2",
+     "title": "Check mobile menu",
+-    "contact": "Jun Lee"
++    "requester": {
++      "name": "Jun Lee",
++      "email": "jun@example.test"
++    }
+   }
+ ]
+diff --git a/tests/test_create.py b/tests/test_create.py
+new file mode 100644
+index 0000000..c3cb71d
+--- /dev/null
++++ b/tests/test_create.py
+@@ -0,0 +1,61 @@
++import unittest
++
++from features.create_api import create
++
++
++def payload(title="Valid", name="Jun", email="jun@example.test"):
++    return {"title": title, "requester": {"name": name, "email": email}}
++
++
++class CreateTests(unittest.TestCase):
++    def test_creation_trims_v2_fields_generates_ids_and_retains_records(self):
++        seed = {"id": "seed-1", **payload("Existing", "Mina", "mina@example.test")}
++        records = [seed]
++        first_status, first = create(payload(" New request ", " Jun ", " jun@example.test "), records)
++        second_status, second = create(payload(), records)
++        self.assertEqual((first_status, second_status), (201, 201))
++        self.assertEqual(first["request"]["title"], "New request")
++        self.assertEqual(first["request"]["requester"], {"name": "Jun", "email": "jun@example.test"})
++        self.assertEqual(set(first["request"]), {"id", "title", "requester"})
++        self.assertTrue(first["request"]["id"])
++        self.assertNotEqual(first["request"]["id"], second["request"]["id"])
++        self.assertEqual(records, [seed, first["request"], second["request"]])
++
++    def test_boundary_lengths_unicode_and_html_remain_text(self):
++        for title, name in (("a", "b"), ("한" * 80, "나" * 60), ('<img src=x onerror="alert(1)">', "<b>Jun</b>")):
++            with self.subTest(title=title):
++                status, body = create(payload(title, name), [])
++                self.assertEqual(status, 201)
++                self.assertEqual(body["request"]["title"], title)
++                self.assertEqual(body["request"]["requester"]["name"], name)
++
++    def test_invalid_v2_and_legacy_payloads_never_mutate_records(self):
++        invalid = [None, [], "text", 1, True, {}, {"title": "ok"}, {"title": "Legacy", "contact": "Jun"}]
++        for value in (None, [], "Jun", 1, True, {}):
++            invalid.append({"title": "Valid", "requester": value})
++        for field, limit in (("title", 80), ("name", 60)):
++            for value in (None, 1, True, [], {}, "", " ", "x" * (limit + 1)):
++                item = payload()
++                if field == "title":
++                    item["title"] = value
++                else:
++                    item["requester"]["name"] = value
++                invalid.append(item)
++        for value in (None, 1, True, [], {}, "", " ", "arin", "@example.test", "arin@", "arin@example", "a b@example.test", "arin@example .test", "a@@example.test", "a@.test", "a@example."):
++            invalid.append(payload(email=value))
++        for field in ("name", "email"):
++            missing = payload()
++            del missing["requester"][field]
++            invalid.append(missing)
++        for item in invalid:
++            with self.subTest(payload=item):
++                records = [{"id": "keep"}]
++                status, body = create(item, records)
++                self.assertEqual(status, 422)
++                self.assertIsInstance(body["error"], str)
++                self.assertTrue(body["error"])
++                self.assertEqual(records, [{"id": "keep"}])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_list.py b/tests/test_list.py
+new file mode 100644
+index 0000000..0e25891
+--- /dev/null
++++ b/tests/test_list.py
+@@ -0,0 +1,48 @@
++import copy
++import unittest
++
++from features.list_api import list_requests
++
++
++class ListRequestsTests(unittest.TestCase):
++    def setUp(self):
++        self.records = [
++            {"id": "one", "title": "Review welcome copy", "requester": {"name": "Mina Park", "email": "mina@example.test"}},
++            {"id": "two", "title": "Check mobile menu", "requester": {"name": "Jun Lee", "email": "jun@example.test"}},
++            {"id": "three", "title": "Straße <script>alert(1)</script>", "requester": {"name": "담당자", "email": "html@example.test"}},
++        ]
++
++    def test_missing_and_empty_query_return_all_in_order(self):
++        for query in ({}, {"q": [""]}):
++            with self.subTest(query=query):
++                self.assertEqual(list_requests(query, self.records), (200, {"requests": self.records}))
++
++    def test_title_name_and_email_substrings_ignore_case(self):
++        for term, expected in (("WELCOME", 0), ("ina p", 0), ("MOBILE", 1), ("LEE", 1), ("MINA@EXAMPLE", 0), ("JUN@", 1), ("STRASSE", 2), ("담당", 2)):
++            with self.subTest(term=term):
++                self.assertEqual(list_requests({"q": [term]}, self.records), (200, {"requests": [self.records[expected]]}))
++
++    def test_unmatched_and_empty_records(self):
++        self.assertEqual(list_requests({"q": ["absent"]}, self.records), (200, {"requests": []}))
++        self.assertEqual(list_requests({}, []), (200, {"requests": []}))
++
++    def test_search_does_not_mutate_records_or_escape_data(self):
++        original = copy.deepcopy(self.records)
++        self.assertEqual(list_requests({"q": ["<script>"]}, self.records)[1]["requests"], [self.records[2]])
++        self.assertEqual(self.records, original)
++
++    def test_reads_current_shared_records(self):
++        added = {"id": "four", "title": "New item", "requester": {"name": "Avery", "email": "avery@example.test"}}
++        self.records.append(added)
++        self.assertEqual(list_requests({"q": ["avery"]}, self.records), (200, {"requests": [added]}))
++
++    def test_v2_response_has_requester_and_no_legacy_contact(self):
++        status, payload = list_requests({}, self.records)
++        self.assertEqual(status, 200)
++        for record in payload["requests"]:
++            self.assertNotIn("contact", record)
++            self.assertEqual(set(record["requester"]), {"name", "email"})
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/web/baseline.html b/web/baseline.html
+new file mode 100644
+index 0000000..284f488
+--- /dev/null
++++ b/web/baseline.html
+@@ -0,0 +1,23 @@
++<!doctype html>
++<html lang="en">
++<head>
++<meta charset="utf-8">
++<meta name="viewport" content="width=device-width, initial-scale=1">
++<title>UI baseline · Request Desk</title>
++<link rel="stylesheet" href="/shared.css">
++<script src="/shared.js" defer></script>
++</head>
++<body>
++<header class="site-header" data-shell></header>
++<main>
++  <div class="stack"><h1>UI baseline</h1><p class="muted">Common components for Request Desk.</p></div>
++  <section class="card stack" aria-labelledby="components-title">
++    <h2 id="components-title">Request form components</h2>
++    <div class="field"><label for="example-title">Title</label><input id="example-title" value="Review welcome copy"></div>
++    <div class="field"><label for="example-email">Requester email</label><input id="example-email" type="email" value="mina@example.test"></div>
++    <div class="actions"><button type="button">Create request</button><a href="/requests">View requests</a></div>
++  </section>
++  <article class="card stack"><h2>Review welcome copy</h2><p class="muted">Mina Park</p><p class="muted">mina@example.test</p></article>
++</main>
++</body>
++</html>
+diff --git a/web/create.html b/web/create.html
+index 0ca915e..ed70f56 100644
+--- a/web/create.html
++++ b/web/create.html
+@@ -1 +1,43 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Request Desk</title><body><p>Create feature not implemented.</p></body></html>
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="utf-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <title>New request · Request Desk</title>
++  <link rel="stylesheet" href="/shared.css">
++  <script src="/shared.js" defer></script>
++  <script src="/create.js" defer></script>
++</head>
++<body>
++  <header class="site-header" data-shell></header>
++  <main>
++    <div class="stack">
++      <h1>New request</h1>
++      <p class="muted">Add a request with the requester's name and email.</p>
++    </div>
++    <form id="create-form" class="card stack">
++      <div class="field">
++        <label for="title">Title</label>
++        <input id="title" name="title" required maxlength="80" aria-describedby="title-help">
++        <p id="title-help" class="muted">1–80 characters.</p>
++      </div>
++      <div class="field">
++        <label for="requester-name">Requester name</label>
++        <input id="requester-name" name="requesterName" required maxlength="60" autocomplete="name" aria-describedby="name-help">
++        <p id="name-help" class="muted">1–60 characters.</p>
++      </div>
++      <div class="field">
++        <label for="requester-email">Requester email</label>
++        <input id="requester-email" name="requesterEmail" type="email" required autocomplete="email" aria-describedby="email-help">
++        <p id="email-help" class="muted">For example, arin@example.test.</p>
++      </div>
++      <p id="create-error" class="error" role="alert" tabindex="-1" hidden></p>
++      <div class="actions"><button type="submit">Create request</button></div>
++    </form>
++    <section id="create-success" class="card stack" role="status" tabindex="-1" hidden>
++      <p class="success">Request created successfully.</p>
++      <a href="/requests">View requests</a>
++    </section>
++  </main>
++</body>
++</html>
+diff --git a/web/create.js b/web/create.js
+new file mode 100644
+index 0000000..7b2a56c
+--- /dev/null
++++ b/web/create.js
+@@ -0,0 +1,45 @@
++(() => {
++  const form = document.querySelector('#create-form');
++  const button = form.querySelector('button');
++  const error = document.querySelector('#create-error');
++  const success = document.querySelector('#create-success');
++
++  form.addEventListener('submit', async (event) => {
++    event.preventDefault();
++    if (button.disabled) return;
++    error.hidden = true;
++    success.hidden = true;
++    button.disabled = true;
++    button.textContent = 'Creating…';
++    try {
++      const response = await fetch('/api/requests', {
++        method: 'POST',
++        headers: { 'Content-Type': 'application/json' },
++        body: JSON.stringify({
++          title: form.elements.title.value,
++          requester: {
++            name: form.elements.requesterName.value,
++            email: form.elements.requesterEmail.value,
++          },
++        }),
++      });
++      const result = await response.json();
++      if (!response.ok) {
++        error.textContent = result.error || 'Could not create the request. Please try again.';
++        error.hidden = false;
++        error.focus();
++        return;
++      }
++      form.reset();
++      success.hidden = false;
++      success.focus();
++    } catch {
++      error.textContent = 'Could not reach the server. Please try again.';
++      error.hidden = false;
++      error.focus();
++    } finally {
++      button.disabled = false;
++      button.textContent = 'Create request';
++    }
++  });
++})();
+diff --git a/web/requests.html b/web/requests.html
+index 9b07aef..17db074 100644
+--- a/web/requests.html
++++ b/web/requests.html
+@@ -1 +1,30 @@
+-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Request Desk</title><body><p>List feature not implemented.</p></body></html>
++<!doctype html>
++<html lang="en">
++<head>
++  <meta charset="utf-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <title>Requests · Request Desk</title>
++  <link rel="stylesheet" href="/shared.css">
++  <script src="/shared.js" defer></script>
++  <script src="/requests.js" defer></script>
++</head>
++<body>
++  <header class="site-header" data-shell></header>
++  <main>
++    <div class="stack">
++      <h1>Requests</h1>
++      <p class="muted">Browse requests or search by title, requester name or email.</p>
++    </div>
++    <form id="search-form" class="card stack" action="/requests" method="get" role="search">
++      <div class="field">
++        <label for="search">Search</label>
++        <input id="search" name="q" type="search" placeholder="Title, requester name or email">
++      </div>
++      <div class="actions"><button type="submit">Search</button></div>
++    </form>
++    <p id="status" class="muted" role="status" aria-live="polite">Loading requests…</p>
++    <section id="results" class="stack" aria-label="Request results" aria-busy="true"></section>
++    <noscript><p class="error">Enable JavaScript to load and search requests.</p></noscript>
++  </main>
++</body>
++</html>
+diff --git a/web/requests.js b/web/requests.js
+new file mode 100644
+index 0000000..dab708b
+--- /dev/null
++++ b/web/requests.js
+@@ -0,0 +1,58 @@
++(() => {
++  const form = document.querySelector('#search-form');
++  const search = document.querySelector('#search');
++  const results = document.querySelector('#results');
++  const status = document.querySelector('#status');
++  let requestNumber = 0;
++
++  async function loadRequests(query) {
++    const currentRequest = ++requestNumber;
++    results.replaceChildren();
++    results.setAttribute('aria-busy', 'true');
++    status.className = 'muted';
++    status.textContent = 'Loading requests…';
++    try {
++      const response = await fetch(`/api/requests?${new URLSearchParams({q: query})}`);
++      if (!response.ok) throw new Error('Request failed');
++      const data = await response.json();
++      if (currentRequest !== requestNumber) return;
++      for (const request of data.requests) {
++        const card = document.createElement('article');
++        card.className = 'card stack';
++        const title = document.createElement('h2');
++        title.textContent = request.title;
++        const name = document.createElement('p');
++        name.className = 'muted';
++        name.textContent = request.requester.name;
++        const email = document.createElement('p');
++        email.className = 'muted';
++        email.textContent = request.requester.email;
++        card.append(title, name, email);
++        results.append(card);
++      }
++      status.textContent = data.requests.length
++        ? `${data.requests.length} request${data.requests.length === 1 ? '' : 's'} found.`
++        : query ? 'No requests match your search. Try another title, name or email.'
++          : 'No requests yet.';
++    } catch (error) {
++      if (currentRequest !== requestNumber) return;
++      results.replaceChildren();
++      status.className = 'error';
++      status.textContent = 'Could not load requests. Please try Search again.';
++    } finally {
++      if (currentRequest === requestNumber) results.setAttribute('aria-busy', 'false');
++    }
++  }
++
++  search.value = new URLSearchParams(location.search).get('q') || '';
++  form.addEventListener('submit', (event) => {
++    event.preventDefault();
++    const query = search.value;
++    const url = new URL(location.href);
++    if (query) url.searchParams.set('q', query);
++    else url.searchParams.delete('q');
++    history.replaceState(null, '', url);
++    loadRequests(query);
++  });
++  loadRequests(search.value);
++})();
+diff --git a/web/shared.css b/web/shared.css
+index 7480c77..0820a5d 100644
+--- a/web/shared.css
++++ b/web/shared.css
+@@ -1 +1,28 @@
+-/* Shared UI styles may be coordinated by main. */
++:root { --primary:#2563eb; --space:24px; --radius:8px; --ink:#172033; --muted:#526176; --border:#cbd5e1; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:16px; color:var(--ink); background:#f5f7fb; }
++* { box-sizing:border-box; }
++body { margin:0; font-size:16px; line-height:1.5; }
++a { color:var(--primary); text-underline-offset:3px; }
++.site-header { background:#fff; border-bottom:1px solid var(--border); }
++.header-inner, main { width:100%; max-width:960px; margin:0 auto; padding:24px; }
++.header-inner { display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
++.brand { font-size:20px; font-weight:700; color:var(--ink); text-decoration:none; }
++nav { display:flex; gap:24px; flex-wrap:wrap; }
++nav a { padding:8px 0; text-decoration:none; }
++nav a[aria-current="page"] { color:var(--ink); font-weight:700; box-shadow:0 2px var(--primary); }
++main, .stack { display:flex; flex-direction:column; gap:24px; }
++h1,h2,p { margin:0; overflow-wrap:anywhere; }
++h1 { font-size:28px; line-height:1.25; }
++h2 { font-size:20px; }
++.card { border:1px solid var(--border); border-radius:8px; background:#fff; padding:24px; min-width:0; }
++.field { display:flex; flex-direction:column; gap:8px; min-width:0; }
++label { font-weight:600; }
++input { display:block; width:100%; min-width:0; min-height:44px; padding:10px 12px; border:1px solid #94a3b8; border-radius:8px; font:inherit; color:inherit; background:#fff; }
++button,.button { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:10px 16px; border:1px solid var(--primary); border-radius:8px; font:inherit; font-weight:600; color:#fff; background:var(--primary); text-decoration:none; cursor:pointer; }
++button:disabled { opacity:.65; cursor:wait; }
++button:focus-visible,input:focus-visible,a:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
++.actions { display:flex; gap:24px; flex-wrap:wrap; align-items:center; }
++.muted { color:var(--muted); }
++.error { color:#b91c1c; }
++.success { color:#166534; }
++[hidden] { display:none !important; }
++@media(max-width:600px) { .header-inner,main { padding:24px 16px; } .header-inner { align-items:flex-start; } .card { padding:24px; } }
+diff --git a/web/shared.js b/web/shared.js
+index b2dbbbf..53b5ca3 100644
+--- a/web/shared.js
++++ b/web/shared.js
+@@ -1 +1,22 @@
+-// Shared UI helpers may be coordinated by main.
++// Shared shell: every page provides only its task-specific main content.
++(() => {
++  const header = document.querySelector('[data-shell]');
++  if (!header) return;
++  const inner = document.createElement('div');
++  inner.className = 'header-inner';
++  const brand = document.createElement('a');
++  brand.className = 'brand';
++  brand.href = '/requests';
++  brand.textContent = 'Request Desk';
++  const nav = document.createElement('nav');
++  nav.setAttribute('aria-label', 'Main navigation');
++  [['/create', 'New request'], ['/requests', 'Requests']].forEach(([href, text]) => {
++    const link = document.createElement('a');
++    link.href = href;
++    link.textContent = text;
++    if (location.pathname === href) link.setAttribute('aria-current', 'page');
++    nav.append(link);
++  });
++  inner.append(brand, nav);
++  header.append(inner);
++})();

@@ -1,0 +1,8 @@
+{
+  "experiment-plan.md": true,
+  "common/spec-v1.md": true,
+  "common/protocol-A.md": true,
+  "common/protocol-B.md": true,
+  "control/spec-v2.md": true,
+  "tooling/evaluate.cjs": true
+}

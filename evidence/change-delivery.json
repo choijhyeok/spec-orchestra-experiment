@@ -1,0 +1,110 @@
+{
+  "published_utc": "2026-10-27T17:00:46.921737+00:00",
+  "change_sha256": "eb90c3bed2bc4fddfe74b0c2bb63c6138097948ba53c48b6a1a03967332bd31b",
+  "path": "[original-experiment-root]/common/spec-v2.md",
+  "barrier": {
+    "A": {
+      "arm": "A",
+      "recorded_utc": "2026-10-27T17:00:10.363501+00:00",
+      "barrier_ready_utc": "2026-10-27T16:59:49.262881+00:00",
+      "integration_branch": "integration/a",
+      "integration_head": "2656ef69b087b5dde3f65cde4d83bc8e350aadcf",
+      "status": "v1 runnable candidates ready; final spec/code review and integration not started; waiting for root common change",
+      "tasks": {
+        "task1": {
+          "worktree": "[original-experiment-root]/arms/A/worktrees/task1",
+          "branch": "a/task1",
+          "base_sha": "2656ef69b087b5dde3f65cde4d83bc8e350aadcf",
+          "candidate_sha": "72d4871e7b8a89ad0c58cc24c4335da2d3d32e7e",
+          "ready_utc": "2026-10-27T16:59:49.262881+00:00",
+          "execution_evidence": [
+            "[original-experiment-root]/arms/A/evidence/task1-candidate.json",
+            "[original-experiment-root]/arms/A/evidence/task1-self-review.md",
+            "[original-experiment-root]/arms/A/evidence/task1-unit.stderr.txt",
+            "[original-experiment-root]/arms/A/evidence/task1-browser-approved.stdout.txt",
+            "[original-experiment-root]/arms/A/evidence/task1-browser-approved.stderr.txt",
+            "[original-experiment-root]/arms/A/evidence/task1-escalations.json"
+          ],
+          "reported_result": "5 unit tests, JS syntax, diff check, actual HTTP and Playwright keyboard/error/safe HTML/desktop/mobile passed",
+          "worktree_clean": true
+        },
+        "task2": {
+          "worktree": "[original-experiment-root]/arms/A/worktrees/task2",
+          "branch": "a/task2",
+          "base_sha": "2656ef69b087b5dde3f65cde4d83bc8e350aadcf",
+          "candidate_sha": "f9b297dc3dd3def8dd3c3bafd2e80d0a066f135c",
+          "ready_utc": "2026-10-27T16:59:21.796652+00:00",
+          "execution_evidence": [
+            "[original-experiment-root]/arms/A/evidence/task2-candidate.md",
+            "[original-experiment-root]/arms/A/evidence/task2-self-review.md",
+            "[original-experiment-root]/arms/A/evidence/task2-unit.stderr.txt",
+            "[original-experiment-root]/arms/A/evidence/task2-browser.stdout.txt"
+          ],
+          "reported_result": "5 unit tests, JS syntax, diff check, actual HTTP and Playwright search/reload/empty/error/safe HTML/desktop/mobile passed",
+          "worktree_clean": true
+        }
+      }
+    },
+    "B": {
+      "arm": "B",
+      "actor_started_utc": "2026-10-27T16:55:20Z",
+      "v1_both_ready_utc": "2026-10-27T16:59:29Z",
+      "barrier_entered_utc": "2026-10-27T17:00:25.467270+00:00",
+      "status": "paused awaiting common change; no final specification/code review or integration",
+      "main_model": {
+        "requested": "gpt-6.1-sol",
+        "reasoning": "high",
+        "spawn_request_accepted": true,
+        "actual_runtime_identity": "not exposed"
+      },
+      "baseline_sha": "a96fdf66038c1775e1ead91d0f949c12415ccf00",
+      "integration_branch": "integration/b",
+      "integration_sha": "e545292d175fa5dd26891e99be57ae5e3bf9a74f",
+      "tasks": {
+        "TASK1": {
+          "spec_version": "v1",
+          "contract_version": "v1",
+          "worktree": "[original-experiment-root]/arms/B/task1",
+          "branch": "task/b-create",
+          "base_sha": "e545292d175fa5dd26891e99be57ae5e3bf9a74f",
+          "candidate_sha": "2dfbacc481e289ee74fc701d2d35d707b42bdb64",
+          "ready_utc": "2026-10-27T16:59:29Z",
+          "worker": "/root/arm_b/b_task1",
+          "execution_evidence": [
+            "[original-experiment-root]/arms/B/evidence/task1-v1-report.md",
+            "[original-experiment-root]/arms/B/evidence/task1-unittest.stdout.log",
+            "[original-experiment-root]/arms/B/evidence/task1-unittest.stderr.log",
+            "[original-experiment-root]/arms/B/evidence/task1-browser-results.json",
+            "[original-experiment-root]/arms/B/evidence/task1-browser.stdout.log",
+            "[original-experiment-root]/arms/B/evidence/task1-browser.stderr.log",
+            "[original-experiment-root]/arms/B/evidence/task1-v1.diff"
+          ],
+          "summary": "3 unit tests with validation subcases; real HTTP 201/422; keyboard browser create, safe HTML, error/recovery, desktop/mobile layout passed; worker self-review; clean worktree"
+        },
+        "TASK2": {
+          "spec_version": "v1",
+          "contract_version": "v1",
+          "worktree": "[original-experiment-root]/arms/B/task2",
+          "branch": "task/b-list",
+          "base_sha": "e545292d175fa5dd26891e99be57ae5e3bf9a74f",
+          "candidate_sha": "91df9ee5190400ba9cd621590e2d5f805eb5f9a5",
+          "ready_utc": "2026-10-27T16:59:26Z",
+          "worker": "/root/arm_b/b_task2",
+          "execution_evidence": [
+            "[original-experiment-root]/arms/B/evidence/task2-v1-report.md",
+            "[original-experiment-root]/arms/B/evidence/task2-unit.stdout",
+            "[original-experiment-root]/arms/B/evidence/task2-unit.stderr",
+            "[original-experiment-root]/arms/B/evidence/task2-api-scoped.stdout",
+            "[original-experiment-root]/arms/B/evidence/task2-api-scoped.stderr",
+            "[original-experiment-root]/arms/B/evidence/task2-browser-results.json",
+            "[original-experiment-root]/arms/B/evidence/task2-browser-scoped.stdout",
+            "[original-experiment-root]/arms/B/evidence/task2-browser-scoped.stderr",
+            "[original-experiment-root]/arms/B/evidence/task2-v1.diff"
+          ],
+          "summary": "5 unit + 5 HTTP checks; browser title/contact search, reload, empty, safe HTML, error/retry, desktop/mobile passed; worker self-review; clean worktree"
+        }
+      },
+      "blockers": []
+    }
+  }
+}

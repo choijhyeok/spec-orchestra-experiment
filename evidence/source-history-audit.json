@@ -1,0 +1,12 @@
+{
+  "A": {
+    "blobs_scanned": 28,
+    "findings": [],
+    "all_commit_metadata_synthetic": true
+  },
+  "B": {
+    "blobs_scanned": 31,
+    "findings": [],
+    "all_commit_metadata_synthetic": true
+  }
+}

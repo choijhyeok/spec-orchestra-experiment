@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Requests · Request Desk</title>
+  <link rel="stylesheet" href="/shared.css">
+  <script src="/shared.js" defer></script>
+  <script src="/requests.js" defer></script>
+</head>
+<body>
+  <header class="site-header" data-shell></header>
+  <main>
+    <div class="stack">
+      <h1>Requests</h1>
+      <p class="muted">Browse requests or search by title, requester name or email.</p>
+    </div>
+    <form id="search-form" class="card stack" action="/requests" method="get" role="search">
+      <div class="field">
+        <label for="search">Search</label>
+        <input id="search" name="q" type="search" placeholder="Title, requester name or email">
+      </div>
+      <div class="actions"><button type="submit">Search</button></div>
+    </form>
+    <p id="status" class="muted" role="status" aria-live="polite">Loading requests…</p>
+    <section id="results" class="stack" aria-label="Request results" aria-busy="true"></section>
+    <noscript><p class="error">Enable JavaScript to load and search requests.</p></noscript>
+  </main>
+</body>
+</html>

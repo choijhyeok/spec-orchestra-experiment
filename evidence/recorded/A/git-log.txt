@@ -1,0 +1,15 @@
+*   57f1981bffb040f3b42467dceefd7cb63b8e0c2e 2026-10-28T02:06:17+09:00 merge: integrate reviewed task2 requester v2
+|\
+| * b82919f6a2c9f2ce783554fc758fb90144644a94 2026-10-28T02:03:16+09:00 feat: search and display requester name and email
+| * e0412989d01e54d29c8692eb2bd556bc5a72a55d 2026-10-28T02:01:38+09:00 data: update synthetic seed to requester v2 contract
+| * f9b297dc3dd3def8dd3c3bafd2e80d0a066f135c 2026-10-28T01:59:04+09:00 feat: implement request list and case-insensitive search
+* |   0d124807b2504a0a5d0dc2fa128bb453f5f26c26 2026-10-28T02:06:17+09:00 merge: integrate reviewed task1 requester v2
+|\ \
+| * | 170c1a1e083402e6ce1875cea1df6276d3b4cc8f 2026-10-28T02:03:25+09:00 feat: migrate creation to requester v2 contract
+| * | 00c2839541b2bab7661250eba057cce31ba4ca42 2026-10-28T02:01:51+09:00 data: update synthetic seed to requester v2 contract
+| * | 72d4871e7b8a89ad0c58cc24c4335da2d3d32e7e 2026-10-28T01:59:38+09:00 feat: implement request creation v1
+| |/
+* / 2756fb0adb3b6c767220b19690d91f96bb944988 2026-10-28T02:01:15+09:00 data: update synthetic seed to requester v2 contract
+|/
+* 2656ef69b087b5dde3f65cde4d83bc8e350aadcf 2026-10-28T01:55:51+09:00 ui: coordinate shared Request Desk styling and navigation
+* 83d4cb183323b69e5b42aad5761d4478dde09a00 2026-10-28T01:54:14+09:00 experiment: identical minimal fixture

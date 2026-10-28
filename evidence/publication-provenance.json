@@ -1,0 +1,165 @@
+{
+  "publication_kind": "clean snapshot of an existing single experiment; no new experiment",
+  "original_initial_commit": "83d4cb183323b69e5b42aad5761d4478dde09a00",
+  "original_heads": {
+    "A": "57f1981bffb040f3b42467dceefd7cb63b8e0c2e",
+    "B": "42202c03eb19d84833386b26742fc6f78aa5b222"
+  },
+  "history_note": "Original revision identifiers are provenance, not commits in this new public history. Original nested git histories and worktree metadata are not published.",
+  "evidence_note": "Personal absolute paths in text evidence replaced; measured outcomes unchanged. Original preregistration hashes refer to original private workspace bytes, not the portable publication tools. Trailing spaces in captured git graph text normalized for clean patch formatting.",
+  "portable_tool_changes": [
+    "Playwright resolves from package dependency, browser path optional env override",
+    "Snapshot validation no longer depends on original unpublished git commits",
+    "Verification run explicitly distinguished from original experiment"
+  ],
+  "snapshots": {
+    "A": {
+      "tracked_files": 16,
+      "all_bytes_match_original": true,
+      "files": [
+        {
+          "path": ".gitignore",
+          "sha256": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c"
+        },
+        {
+          "path": "features/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "features/create_api.py",
+          "sha256": "1bceaa768161da8e87b6a4feb510062455b207eb870e7c95e1dcf746688e250c"
+        },
+        {
+          "path": "features/list_api.py",
+          "sha256": "7009a8c2d830ed55eb77dff9e3f8b55755545b4aa29bcdba1f36b4c71b73c92b"
+        },
+        {
+          "path": "seed.json",
+          "sha256": "d61aba301f9e8543767a01cfc4c33ac8438e21cbe7195bc8432e3b768adeadee"
+        },
+        {
+          "path": "server.py",
+          "sha256": "7baef931814ac531ffe08e313593a44f63fb27c28e7e3a1f2af164dc6555222d"
+        },
+        {
+          "path": "tests/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "tests/test_create.py",
+          "sha256": "252daa472751b6e2d059bd483f30b1058601c28b3093bf53d423a5f4c861a16f"
+        },
+        {
+          "path": "tests/test_list.py",
+          "sha256": "1fc5fdd348b1f5040b03cfee1277a23144bd7739a58982c5a0fe4279a65dd0f4"
+        },
+        {
+          "path": "web/create.css",
+          "sha256": "7c1a7aa6233db9385ad49588c458705f4ca907b5177a036343e26124a702d4a3"
+        },
+        {
+          "path": "web/create.html",
+          "sha256": "5fb979712828dbf789399d1c2a000e3b0f72fa6afd1de075b486670da0265795"
+        },
+        {
+          "path": "web/create.js",
+          "sha256": "081b401adefc2dba4615ecc5b65844db12a9036b66de4d4e6c10cc468b51e94a"
+        },
+        {
+          "path": "web/requests.html",
+          "sha256": "abc5cd9fcf54fb376af4e4122aec72c9f8cbceaa825ae78ba7965e80fd57916e"
+        },
+        {
+          "path": "web/requests.js",
+          "sha256": "5bd8fa07dca9ede88839290a3235aa2425164fc0f35be852f6d125f8a041796f"
+        },
+        {
+          "path": "web/shared.css",
+          "sha256": "32bec6c885cb6c7856ad5b73e47920690abf6bb5a27ff65d28b205cd6c4748c9"
+        },
+        {
+          "path": "web/shared.js",
+          "sha256": "97c0c02cef0bdbf50c73203603e0ab18a65486433646c217d178d0d3eabea6bd"
+        }
+      ]
+    },
+    "B": {
+      "tracked_files": 18,
+      "all_bytes_match_original": true,
+      "files": [
+        {
+          "path": ".gitignore",
+          "sha256": "b2b4f4a0e922e3b58e7b532a0a01d0acc1682eb65f7179ddd7cb8d1d83014c8c"
+        },
+        {
+          "path": "docs/ui-contract-v1.md",
+          "sha256": "5259ada953ea0db7c9d7e1eefd3ae119272ce095c02f0a1dfec9788d9360e2b5"
+        },
+        {
+          "path": "docs/ui-contract-v2.md",
+          "sha256": "d1b39bee9e595b552085a8cd65cb6c42105c2f1d433fd78aeb878421a0899042"
+        },
+        {
+          "path": "features/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "features/create_api.py",
+          "sha256": "16363a996091f3df10feb98ecd85f8eeb13211ef8f19d902e75f1b1098e262c8"
+        },
+        {
+          "path": "features/list_api.py",
+          "sha256": "a606ce39cf2597df6159fd889ffd7a51fa381b09edaf893e161766d71b9a7af4"
+        },
+        {
+          "path": "seed.json",
+          "sha256": "d61aba301f9e8543767a01cfc4c33ac8438e21cbe7195bc8432e3b768adeadee"
+        },
+        {
+          "path": "server.py",
+          "sha256": "7baef931814ac531ffe08e313593a44f63fb27c28e7e3a1f2af164dc6555222d"
+        },
+        {
+          "path": "tests/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "tests/test_create.py",
+          "sha256": "ae6a77fea5e551b4ed5f8c335623c05161fc13763d23b9778dd4b664c5865be7"
+        },
+        {
+          "path": "tests/test_list.py",
+          "sha256": "ed725d22201dbe965198924a80bb4a3bc2ced07882c208cbfecc748f22da81e9"
+        },
+        {
+          "path": "web/baseline.html",
+          "sha256": "7f2f073f545781c6bf8d1f00084be2966fd0b5263c77401ca22c4019384fffaa"
+        },
+        {
+          "path": "web/create.html",
+          "sha256": "3508c0dfbef2dbbe5ada43a2ceb47f080b1bac5a44f31ed861ecea058e61926d"
+        },
+        {
+          "path": "web/create.js",
+          "sha256": "4c9f9fed64204df2ac98e2bd94d3a7dd4bbeff5433286e9c074c4edd2a9bcad1"
+        },
+        {
+          "path": "web/requests.html",
+          "sha256": "db42bac6c59de6f42a9c9c078a51483a405e512b86ae2029cd4e57a7082be443"
+        },
+        {
+          "path": "web/requests.js",
+          "sha256": "41001eabbb76e159d04aef517fb159e2e2cbad55165ab3e6fb9ee588616ff920"
+        },
+        {
+          "path": "web/shared.css",
+          "sha256": "4dd0620e45573685592001a91093bd075be07a30b01c254665ad378e7065bc82"
+        },
+        {
+          "path": "web/shared.js",
+          "sha256": "e0b5e82357fe83cbe5c9e67e7252bb5078c7751238283ba4c35fb1cbd9a7cb89"
+        }
+      ]
+    }
+  }
+}

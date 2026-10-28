@@ -1,0 +1,13 @@
+{
+  "name": "spec-orchestra-experiment",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A single synthetic workflow comparison experiment, not an orchestration product",
+  "scripts": {
+    "verify:a": "node tooling/evaluate.cjs apps/A verification-output/A 8151",
+    "verify:b": "node tooling/evaluate.cjs apps/B verification-output/B 8152"
+  },
+  "devDependencies": {
+    "playwright": "1.59.1"
+  }
+}

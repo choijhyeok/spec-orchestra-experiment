@@ -1,0 +1,58 @@
+{
+  "arm": "B",
+  "status": "first-complete-ready-for-independent-evaluation",
+  "first_complete_head": "42202c03eb19d84833386b26742fc6f78aa5b222",
+  "first_complete_utc": "2026-10-27T17:08:29.281793+00:00",
+  "integration_branch": "integration/b",
+  "repository": "apps/B",
+  "spec_version": "v2",
+  "contract_version": "v2",
+  "spec_v2_sha256": "eb90c3bed2bc4fddfe74b0c2bb63c6138097948ba53c48b6a1a03967332bd31b",
+  "task_candidates": {
+    "TASK1": "bd39f49cb307830cbdd20a49f5b6202d2b8681d3",
+    "TASK2": "fac11fcc45f750b85c7e5d706a3a7ade926a9eeb"
+  },
+  "reviews": {
+    "spec": "PASS",
+    "quality": "PASS",
+    "cross_task": "PASS",
+    "findings": []
+  },
+  "validation": {
+    "unit_tests_passed": 9,
+    "api_checks_passed": 11,
+    "integrated_browser_flows_passed": 2,
+    "resolutions": [
+      "1280x800",
+      "390x844"
+    ],
+    "ui6_self_check": 6,
+    "page_errors": [],
+    "evidence": "[original-experiment-root]/arms/B/evidence/integration-results.json"
+  },
+  "rework": {
+    "feedback_fix_rounds": 0,
+    "feedback_fix_commits": 0,
+    "normal_v2_implementation_commits": 2
+  },
+  "stale_submissions": 0,
+  "stale_inflow": 0,
+  "timing": {
+    "started_utc": "2026-10-27T16:55:20Z",
+    "v1_both_ready_utc": "2026-10-27T16:59:29Z",
+    "barrier_enter_utc": "2026-10-27T17:00:25.467270+00:00",
+    "barrier_exit_utc": "2026-10-27T17:01:16Z",
+    "elapsed_seconds": 789.281793,
+    "barrier_wait_seconds": 50.53273,
+    "active_elapsed_seconds": 738.749063,
+    "budget_seconds": 1500,
+    "change_event_written_utc": "2026-10-27T17:01:40.124512+00:00",
+    "barrier_exit_basis": "Clock read immediately after reading/hash-checking v2; later event append is retained separately"
+  },
+  "blockers": [],
+  "limitations": [
+    "Runtime model identity not exposed; requested overrides accepted",
+    "Self-checks are not the independent root evaluation",
+    "Infrastructure approval waits included in elapsed; separate duration not exposed/recorded precisely"
+  ]
+}
